@@ -1,0 +1,48 @@
+package CentriVaccinali;
+
+import Controlli.*;
+
+public class MainProgram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		byte menu = 0, menu1 = 0, menu2 = 0, scelta = 0;
+		while(true) {
+			menu = 0;
+			menu1 = -2;
+			menu2 = -2;
+			menu = Controlli.menuPrincipale();
+			if(menu==0)
+				break;
+			else
+				if(menu==1)
+					menu1 = Controlli.menuCittadini();
+				else
+					menu2 = Controlli.menuCentriVaccinali();
+			if(menu1==0 || menu2==0)
+				break;
+			else
+				if(menu1!=-1 && menu2!=-1) {
+					if(menu==2)
+						scelta = (byte) (4 + menu2);
+					/*switch(scelta) {
+						case 1:
+							
+						case 2:
+						
+						case 3:
+							
+						case 4:
+							
+						case 5:
+							
+						case 6:
+					}*/
+				}
+		}
+		System.out.println("uscito");
+	}
+	
+
+}
