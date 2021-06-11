@@ -1,0 +1,73 @@
+package Controlli;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Controlli {
+	
+	public static byte menuPrincipale() {
+		byte num = 0;
+		while(true) {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("scegli:\n1) Centri Vaccinali\n2) Cittadini\n0) per uscire");
+				while(sc.hasNext()) {
+					num = sc.nextByte();
+					if(num>=0 && num<=2)
+						return num;
+					else
+						System.out.println("inserisca un numero tra 0 e 2");
+				}
+				sc.close();
+			}
+			catch (InputMismatchException e) {
+				System.out.println("valore inserito non coerente\ninserisca un numero tra 0 e 2");
+			}
+		}
+	}
+	
+	public static byte menuCittadini() {
+		byte num = 0;
+		while(true) {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("scegli:\n1) cerca centro vaccinale\n2) visualizza centro vaccinale\n3) registra cittadino\n"
+						+ "4) inserisci eventi avversi\n-1)back per tornare indietro\n0)exit per uscire");
+				while(sc.hasNext()) {
+					num = sc.nextByte();
+					if(num>=-1 && num<=2)
+						return num;
+					else
+						System.out.println("inserisca un numero tra -1 e 4");
+				}
+				sc.close();
+			}
+			catch (InputMismatchException e) {
+				System.out.println("valore inserito non coerente\ninserisca un numero tra 1 e 4");
+			}
+		}
+	}
+	
+	public static byte menuCentriVaccinali() {
+		byte num = 0;
+		while(true) {
+			try {
+				Scanner sc = new Scanner(System.in);
+				System.out.println("scegli:\n1) registra centri vaccinale\n2) registra vaccinato\n-1)back per tornare indietro\n0)exit per uscire");
+				while(sc.hasNext()) {
+					num = sc.nextByte();
+					if(num>=-1 && num<=2)
+						return num;
+					else
+						System.out.println("inserisca un numero tra -1 e 2");
+				}
+				sc.close();
+			}
+			catch (InputMismatchException e) {
+				System.out.println("valore inserito non coerente\ninserisca un numero tra -1 e 2");
+			}
+		}
+	}
+	
+	
+}
