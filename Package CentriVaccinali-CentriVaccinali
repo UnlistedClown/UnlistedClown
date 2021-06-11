@@ -1,0 +1,26 @@
+package CentriVaccinali;
+
+public class CentriVaccinali {
+	
+	//stato interno
+	
+	//costruttore
+	public CentriVaccinali() {
+		
+	}
+	
+	//metodi
+	
+	//nome centro vaccinale - indirizzo - tipologia
+	public void registraCentroVaccinali() {
+		
+		//chiamare metodi per salvare su un file
+	}
+	
+	//nome centro vaccinale - nome e cognome vaccinato - codice fiscale - data somministrazione - nome vaccino - id univoco
+	public void registraVaccinato() {
+		
+		//chiamare metodi per salvare su un file
+	}
+	
+}
