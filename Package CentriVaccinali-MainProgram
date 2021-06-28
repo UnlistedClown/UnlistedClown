@@ -6,27 +6,30 @@ public class MainProgram {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
 		byte menu = 0, menu1 = 0, menu2 = 0, scelta = 0;
+		CentriVaccinali cv = new CentriVaccinali();
+		
 		while(true) {
 			menu = 0;
 			menu1 = -2;
 			menu2 = -2;
-			menu = Controlli.menuPrincipale();
+			menu = Controlli.controllomenu((byte) 0 ,(byte) 2, "Scegli:\n1) Cittadini\n2) Centri Vaccinali\n0) per uscire");
 			if(menu==0)
 				break;
 			else
 				if(menu==1)
-					menu1 = Controlli.menuCittadini();
+					menu1 = Controlli.controllomenu((byte) -1,(byte) 4, "Scegli:\n1) cerca centro vaccinale\n2) visualizza centro vaccinale"
+							+"\n3) registra cittadino\n4) inserisci eventi avversi\n-1)back per tornare indietro\n0)exit per uscire");
 				else
-					menu2 = Controlli.menuCentriVaccinali();
+					menu2 = Controlli.controllomenu((byte) -1,(byte) 2, "S2cegli:\n1) registra centri vaccinale"
+							+ "\n2) registra vaccinato\n-1)back per tornare indietro\n0)exit per uscire");
 			if(menu1==0 || menu2==0)
 				break;
 			else
 				if(menu1!=-1 && menu2!=-1) {
 					if(menu==2)
 						scelta = (byte) (4 + menu2);
-					/*switch(scelta) {
+					switch(scelta) {
 						case 1:
 							
 						case 2:
@@ -36,13 +39,17 @@ public class MainProgram {
 						case 4:
 							
 						case 5:
-							
+							cv.registraCentroVaccinali();
+							break;
 						case 6:
-					}*/
+							cv.registraVaccinato();
+							break;
+					}
 				}
 		}
-		System.out.println("uscito");
+		System.out.println("Arrivederci");
 	}
 	
 
 }
+
