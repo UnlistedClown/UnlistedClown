@@ -1,26 +1,39 @@
 package CentriVaccinali;
 
+import Controlli.*;
+
 public class CentriVaccinali {
 	
-	//stato interno
-	
-	//costruttore
-	public CentriVaccinali() {
-		
-	}
+	//interno
+	FileManager filecentri = new FileManager("centri vaccianli");
+	FileManager filevaccinati = new FileManager("vaccinati");
 	
 	//metodi
 	
 	//nome centro vaccinale - indirizzo - tipologia
 	public void registraCentroVaccinali() {
-		
+		String[] vet = new String[6];
+		vet[0] = Controlli.inputstringhe("nome centro vaccinale", (byte) 50);
+		vet[1] = Controlli.inputstringhe("tipologia del centro vaccinale", (byte) 20);
+		vet[2] = Controlli.province();
+		vet[3] = Controlli.inputstringhe("il comune del centro vaccinale", (byte) 35);
+		vet[4] = Controlli.inputstringhe("la via del centro vaccinale, es. 'via Garibaldi 10'", (byte) 45);
+		vet[5] = Controlli.cap();
 		//chiamare metodi per salvare su un file
+		filecentri.write(vet);
 	}
 	
 	//nome centro vaccinale - nome e cognome vaccinato - codice fiscale - data somministrazione - nome vaccino - id univoco
 	public void registraVaccinato() {
-		
+		String[] vet = new String[6];
+		vet[0] = Controlli.id();
+		vet[1] = Controlli.inputstringhe("nome centro vaccinale", (byte) 50);
+		vet[2] = Controlli.inputstringhe("nome e cognome vaccinato", (byte) 30);
+		vet[3] = Controlli.cap();
+		vet[4] = Controlli.codicefis();
+		vet[5] = Controlli.data();
 		//chiamare metodi per salvare su un file
+		filevaccinati.write(vet);
 	}
 	
 }
