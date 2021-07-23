@@ -1,68 +1,67 @@
 package CentriVaccinali;
 
 import Controlli.*;
-import Cittadini.*;
 
-public class MainProgram {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		byte menu = 0, menu1 = 0, menu2 = 0;
-		CentriVaccinali cv = new CentriVaccinali();
+public class CentriVaccinali {
+	
+	//interno
+	FileManager file_centri = new FileManager("CentriVaccinati");
+	DataManager file_centri_op = new DataManager(file_centri);
+	
+	//metodi
+	
+	//nome centro vaccinale - indirizzo - tipologia
+	public void registraCentroVaccinali() {
+		String[] vet = new String[6];
+		boolean validazione = true;
 		
-		while(true) {
-			menu = 0;
-			menu1 = -2;
-			menu2 = -2;
-			menu = Controlli.controllomenu((byte) 0 ,(byte) 2, "Scegli:\n1) Cittadini\n2) Centri Vaccinali\n0) per uscire");
-			if(menu==0)
-				break;
-			else
-				if(menu==1)
-					menu1 = Controlli.controllomenu((byte) -1,(byte) 4, "Scegli:\n1) cerca centro vaccinale\n2) visualizza centro vaccinale"
-							+"\n3) registra cittadino\n4) inserisci eventi avversi\n-1)back per tornare indietro\n0)exit per uscire");
-				else
-					menu2 = Controlli.controllomenu((byte) -1,(byte) 2, "Scegli:\n1) registra centro vaccinale"
-							+ "\n2) registra vaccinato\n-1)back per tornare indietro\n0)exit per uscire");
-			
-			if(menu1==0 || menu2==0)
-				break;
-			else
-				if(menu1!=-1 && menu2!=-1) {
-					if(menu1 != -2) {
-						switch(menu1) {
-							case 1:
-								System.out.println("ciao");
-								break;
-							case 2:
-								System.out.println("ciao");
-								break;
-							case 3:
-								System.out.println("ciao");
-								break;
-							case 4:
-								System.out.println("ciao");
-								String user_id = Cittadini.login();
-								break;
-						}
-					}
-					else {
-						switch(menu2) {
-							case 1:
-								cv.registraCentroVaccinali();
-								System.out.println("Operazione completata");
-								break;
-							case 2:
-								cv.registraVaccinato();
-								System.out.println("Operazione completata");
-								break;
-						}
-					}
-						
-				}
+		vet[0] = Controlli.inputstringhe("nome centro vaccinale", (byte) 50);
+		String[] listafile = file_centri.getFileList();
+		for(int i=0; i<listafile.length; i++) {
+			if(listafile[i].equals("Vaccinati_" + vet[0].replaceAll("\\s+","") + ".dati")) {
+				System.out.println("il centro vaccinale è già stato registrato");
+				validazione = false;
 			}
-		System.out.println("Arrivederci");
+		}
+		if(validazione) {
+		new FileManager("Vaccinati_"+ vet[0].replaceAll("\\s+",""));
+		vet[1] = Controlli.tipocentro();
+		vet[2] = Controlli.province();
+		vet[3] = Controlli.inputstringhe("il comune del centro vaccinale", (byte) 35);
+		vet[4] = Controlli.inputstringhe("la via del centro vaccinale, es. 'via Garibaldi 10'", (byte) 45);
+		vet[5] = Controlli.cap();
+		//chiamare metodi per salvare su un file
+		file_centri_op.write(vet);
+		}
 	}
 	
-
+	//nome centro vaccinale - nome e cognome vaccinato - codice fiscale - data somministrazione - nome vaccino - id univoco
+	public void registraVaccinato() {
+		String[] vet = new String[5];
+		FileManager primacolonna = new FileManager("CentriVaccinati");
+		DataManager primacolonna_op = new DataManager(primacolonna);
+		String[] vetprima = primacolonna_op.firstColumn();
+		String s;
+		boolean exit = true;
+		
+		do {
+		for(int i=0; i<vetprima.length; i++)
+			System.out.println(vetprima[i]);
+		s = Controlli.inputstringhe("nome centro vaccinale tra quelli elencati", (byte) 50);
+		for(int i=0; i<vetprima.length; i++)
+			if(vetprima[i].equals(s))
+				exit = false;
+		} while(exit);	
+		
+		FileManager file_vaccinati = new FileManager("Vaccinati_" + s.replaceAll("\\s+", ""));
+		DataManager file_vaccinati_op = new DataManager(file_vaccinati);
+		vet[0] = Controlli.id(file_vaccinati_op);
+		vet[1] = Controlli.inputstringhe("nome e cognome vaccinato", (byte) 30);
+		vet[2] = Controlli.codicefis();
+		vet[3] = Controlli.data();
+		vet[4] = Controlli.nomevaccino();
+		//chiamare metodi per salvare su un file
+		file_vaccinati_op.write(vet);
+	}
+	
 }
