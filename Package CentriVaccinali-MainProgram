@@ -1,12 +1,13 @@
-package CentriVaccinali;
+ackage CentriVaccinali;
 
 import Controlli.*;
+import Cittadini.*;
 
 public class MainProgram {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		byte menu = 0, menu1 = 0, menu2 = 0, scelta = 0;
+		byte menu = 0, menu1 = 0, menu2 = 0;
 		CentriVaccinali cv = new CentriVaccinali();
 		
 		while(true) {
@@ -21,32 +22,45 @@ public class MainProgram {
 					menu1 = Controlli.controllomenu((byte) -1,(byte) 4, "Scegli:\n1) cerca centro vaccinale\n2) visualizza centro vaccinale"
 							+"\n3) registra cittadino\n4) inserisci eventi avversi\n-1)back per tornare indietro\n0)exit per uscire");
 				else
-					menu2 = Controlli.controllomenu((byte) -1,(byte) 2, "S2cegli:\n1) registra centri vaccinale"
+					menu2 = Controlli.controllomenu((byte) -1,(byte) 2, "Scegli:\n1) registra centro vaccinale"
 							+ "\n2) registra vaccinato\n-1)back per tornare indietro\n0)exit per uscire");
+			
 			if(menu1==0 || menu2==0)
 				break;
 			else
 				if(menu1!=-1 && menu2!=-1) {
-					if(menu==2)
-						scelta = (byte) (4 + menu2);
-					switch(scelta) {
-						case 1:
-							
-						case 2:
-						
-						case 3:
-							
-						case 4:
-							
-						case 5:
-							cv.registraCentroVaccinali();
-							break;
-						case 6:
-							cv.registraVaccinato();
-							break;
+					if(menu1 != -2) {
+						switch(menu1) {
+							case 1:
+								System.out.println("ciao");
+								break;
+							case 2:
+								System.out.println("ciao");
+								break;
+							case 3:
+								System.out.println("ciao");
+								break;
+							case 4:
+								System.out.println("ciao");
+								String user_id = Cittadini.login();
+								break;
+						}
 					}
+					else {
+						switch(menu2) {
+							case 1:
+								cv.registraCentroVaccinali();
+								System.out.println("Operazione completata");
+								break;
+							case 2:
+								cv.registraVaccinato();
+								System.out.println("Operazione completata");
+								break;
+						}
+					}
+						
 				}
-		}
+			}
 		System.out.println("Arrivederci");
 	}
 	
