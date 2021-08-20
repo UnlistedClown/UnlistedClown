@@ -2,7 +2,7 @@ package CentriVaccinali;
 
 import Controlli.*;
 
-public class CentriVaccinali {
+public class CentriVaccinale {
 	
 	//stato interno
 	FileManager file_centri = new FileManager("CentriVaccinali");
@@ -45,7 +45,7 @@ public class CentriVaccinali {
 	 */
 	public void registraVaccinato() {
 		String[] vet = new String[5]; //gestisce l'input dei dati
-		FileManager primacolonna = new FileManager("CentriVaccinati");
+		FileManager primacolonna = new FileManager("CentriVaccinali");
 		DataManager primacolonna_op = new DataManager(primacolonna);
 		String[] vetprima = primacolonna_op.firstColumn(); //variabile di supporto
 		String s; //variabile di supporto
