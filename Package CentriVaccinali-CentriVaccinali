@@ -4,20 +4,23 @@ import Controlli.*;
 
 public class CentriVaccinali {
 	
-	//interno
-	FileManager file_centri = new FileManager("CentriVaccinati");
+	//stato interno
+	FileManager file_centri = new FileManager("CentriVaccinali");
 	DataManager file_centri_op = new DataManager(file_centri);
 	
 	//metodi
-	
-	//nome centro vaccinale - indirizzo - tipologia
+	/**
+	 * <p> il metodo <code> registraCentroVaccinali </code> 
+	 * gestisce e controlla l'inserimento dei dati di un centro vaccinale</p>
+	 * 
+	 */
 	public void registraCentroVaccinali() {
-		String[] vet = new String[6];
+		String[] vet = new String[6]; //gestisce l'input dei dati
 		boolean validazione = true;
 		
 		vet[0] = Controlli.inputstringhe("nome centro vaccinale", (byte) 50);
 		String[] listafile = file_centri.getFileList();
-		for(int i=0; i<listafile.length; i++) {
+		for(int i=0; i<listafile.length; i++) { //verifica che non vengano inseriti due centri uguali
 			if(listafile[i].equals("Vaccinati_" + vet[0].replaceAll("\\s+","") + ".dati")) {
 				System.out.println("il centro vaccinale è già stato registrato");
 				validazione = false;
@@ -30,19 +33,23 @@ public class CentriVaccinali {
 		vet[3] = Controlli.inputstringhe("il comune del centro vaccinale", (byte) 35);
 		vet[4] = Controlli.inputstringhe("la via del centro vaccinale, es. 'via Garibaldi 10'", (byte) 45);
 		vet[5] = Controlli.cap();
-		//chiamare metodi per salvare su un file
+		//metodo per salvare su file
 		file_centri_op.write(vet);
 		}
 	}
 	
-	//nome centro vaccinale - nome e cognome vaccinato - codice fiscale - data somministrazione - nome vaccino - id univoco
+	/**
+	 * <p> il metodo <code> registraVaccinato </code>
+	 * gestisce e controlla l'inserimento dei dati di un vaccinato </p>
+	 * 
+	 */
 	public void registraVaccinato() {
-		String[] vet = new String[5];
+		String[] vet = new String[5]; //gestisce l'input dei dati
 		FileManager primacolonna = new FileManager("CentriVaccinati");
 		DataManager primacolonna_op = new DataManager(primacolonna);
-		String[] vetprima = primacolonna_op.firstColumn();
-		String s;
-		boolean exit = true;
+		String[] vetprima = primacolonna_op.firstColumn(); //variabile di supporto
+		String s; //variabile di supporto
+		boolean exit = true; //variabile di supporto
 		
 		do {
 		for(int i=0; i<vetprima.length; i++)
@@ -60,7 +67,7 @@ public class CentriVaccinali {
 		vet[2] = Controlli.codicefis();
 		vet[3] = Controlli.data();
 		vet[4] = Controlli.nomevaccino();
-		//chiamare metodi per salvare su un file
+		//metodo per salvare su file
 		file_vaccinati_op.write(vet);
 	}
 	
