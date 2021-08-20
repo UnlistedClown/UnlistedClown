@@ -1,4 +1,4 @@
-ackage CentriVaccinali;
+package CentriVaccinali;
 
 import Controlli.*;
 import Cittadini.*;
@@ -7,10 +7,10 @@ public class MainProgram {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		byte menu = 0, menu1 = 0, menu2 = 0;
+		byte menu = 0, menu1 = 0, menu2 = 0; //variabili per gestire scelta utente
 		CentriVaccinali cv = new CentriVaccinali();
 		
-		while(true) {
+		while(true) { //ciclo per tutto il programma
 			menu = 0;
 			menu1 = -2;
 			menu2 = -2;
@@ -66,4 +66,3 @@ public class MainProgram {
 	
 
 }
-
