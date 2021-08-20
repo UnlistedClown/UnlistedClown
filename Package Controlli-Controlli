@@ -6,6 +6,15 @@ import java.util.Scanner;
 public class Controlli {
 	
 	//metodo che controlla il menu
+	/**
+	 * <p> il metodo <code> controllomenu </code>
+	 * gestisce le scelte all'interno del menu
+	 * 
+	 * @param inf numero minimo
+	 * @param sup numero massimo
+	 * @param riga stringa contenente il menu
+	 * @return numero scelto
+	 */
 	public static byte controllomenu(byte inf, byte sup, String riga) {
 		byte num = 0;
 		while(true) {
@@ -28,6 +37,14 @@ public class Controlli {
 	}
 	
 	//metodo di input stringhe
+	/**
+	 * <p> il metodo <code> inputstringhe </code> 
+	 * permette di acquisire una stringa dall'utente.</p>
+	 * 
+	 * @param riga stringa da inserire
+	 * @param max lunghezza massima stringa
+	 * @return la stringa inserita
+	 */
 	public static String inputstringhe(String riga, byte max) {
 		String s;
 		Scanner sc = new Scanner(System.in);
@@ -39,6 +56,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo tipologia centro
+	/**
+	 * <p> il metodo <code> tipocentro </code>
+	 * permette di verificare e acquisire il tipo del centro vaccinale </p>
+	 * 
+	 * @return tipo centro vaccinale
+	 */
 	public static String tipocentro() {
 		Scanner sc = new Scanner(System.in);
 		
@@ -59,6 +82,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo provincie
+	/**
+	 * <p> il metodo <code> province </code> 
+	 * verifica che l'utente inserisca una provincia esistente </p>
+	 * 
+	 * @return la stringa in maiuscolo cotenente una provincia
+	 */
 	public static String province() {
 		String s;
 		FileManager file_province = new FileManager("Province");
@@ -80,6 +109,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo cap
+	/**
+	 * <p> il metodo <code> cap </code> 
+	 * controlla inserimento di un cap esistente </p>
+	 * 
+	 * @return la stringa contenente un cap
+	 */
 	public static String cap() {
 		String s;
 		int num = 0;
@@ -101,6 +136,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo codice fiscale
+	/**
+	 * <p> il metodo <code> codicefis </code> 
+	 * controlla l'inserimento del codice fiscale</p>
+	 * 
+	 * @return la stringa contenente una codice fiscale
+	 */
 	public static String codicefis() {
 		Scanner sc = new Scanner(System.in);
 		
@@ -114,6 +155,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo data
+	/**
+	 * <p> il metodo <code> data </code>
+	 * verifica la correttezza della data inserita</p>
+	 * 
+	 * @return la stringa contente una data
+	 */
 	public static String data() {
 		Scanner sc = new Scanner(System.in);
 		
@@ -126,6 +173,13 @@ public class Controlli {
 	}
 	
 	//metodo id univoco
+	/**
+	 * <p> il metodo <code> id </code> 
+	 * ricava il codice id</p>
+	 * 
+	 * @param file_id file dove inserire il vaccinato
+	 * @return id univoco per quel centro vaccinale
+	 */
 	public static String id(DataManager file_id) {
 		int righe = file_id.getLineCount();
 		String s;
@@ -144,6 +198,12 @@ public class Controlli {
 	}
 	
 	//metodo controllo nome vaccino
+	/**
+	 * <p> il metodo <code> nomevaccino </code> 
+	 * verifica la correttezza del vaccino inserito </p>
+	 * 
+	 * @return nome vaccino somministrato
+	 */
 	public static String nomevaccino() {
 		Scanner sc = new Scanner(System.in);
 		
